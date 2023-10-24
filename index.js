@@ -62,7 +62,7 @@ function capNhat() {
     })
     var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
     console.log('viTri: ', viTri);
-    var isValid =kiemTrung(dsnv,nv.taiKhoan) & kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
+    var isValid =kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
     isValid = isValid & kiemTraName(nv.name, "tbTen");
     isValid = isValid & kiemEmail(nv.email);
     isValid = isValid & kiemTraPassword(nv.matKhau);
@@ -81,7 +81,8 @@ function capNhat() {
     nv.ngay = _ngay;
     nv.chucVu = _chucVu;
     nv.gioLam = _gioLam;
-    nv.taiKhoan_taiKhoan;    
+    nv.taiKhoan_taiKhoan; 
+       
     renderDsnv(dsnv);
     }
 }
