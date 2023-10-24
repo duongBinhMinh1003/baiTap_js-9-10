@@ -10,7 +10,7 @@ function themNv() {
     var _gioLam = document.getElementById("gioLam").value * 1;
     
     var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
-    var isValid =kiemTrung(dsnv,nv.taiKhoan) & kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
+    var isValid =kiemTrung(dsnv,nv.taiKhoan) && kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
     isValid = isValid & kiemTraName(nv.name, "tbTen");
     isValid = isValid & kiemEmail(nv.email);
     isValid = isValid & kiemTraPassword(nv.matKhau);
