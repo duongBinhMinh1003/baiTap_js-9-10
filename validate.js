@@ -62,7 +62,7 @@ function kiemEmail(email){
   /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   if(re.test(email)){
     document.getElementById("tbEmail").innerText="";
-    return true
+    return true;
   }
   document.getElementById("tbEmail").innerText="Email không hợp lệ";
   return false;

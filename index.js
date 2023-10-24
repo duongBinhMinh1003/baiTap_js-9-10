@@ -10,7 +10,7 @@ function themNv() {
     var _gioLam = document.getElementById("gioLam").value * 1;
     
     var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
-    var isValid =kiemTrung(dsnv,nv.taiKhoan) && kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
+    var isValid =kiemTrung(dsnv,nv.taiKhoan) & kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
     isValid = isValid & kiemTraName(nv.name, "tbTen");
     isValid = isValid & kiemEmail(nv.email);
     isValid = isValid & kiemTraPassword(nv.matKhau);
@@ -62,6 +62,16 @@ function capNhat() {
     })
     var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
     console.log('viTri: ', viTri);
+    var isValid =kiemTrung(dsnv,nv.taiKhoan) & kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
+    isValid = isValid & kiemTraName(nv.name, "tbTen");
+    isValid = isValid & kiemEmail(nv.email);
+    isValid = isValid & kiemTraPassword(nv.matKhau);
+    isValid = isValid & kiemTraDay(nv.ngay);
+    isValid = isValid & kiemTraDoDaiLuong(nv.luong, "tbLuongCB", 10e6, 20e6);
+    isValid = isValid & kiemTraChucVu(nv.chucVu);
+    isValid = isValid & kiemTraDoDaiH(nv.gioLam, "tbGiolam", 80, 200);
+
+    if(isValid){
     var nv = dsnv[viTri];
     nv.name = _name;
     nv.email = _email;
@@ -71,16 +81,7 @@ function capNhat() {
     nv.ngay = _ngay;
     nv.chucVu = _chucVu;
     nv.gioLam = _gioLam;
-    nv.taiKhoan_taiKhoan;
-    var isValid = kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6);
-    isValid = isValid & kiemTraName(nv.name, "tbTen");
-    isValid = isValid & kiemEmail(nv.email);
-    isValid = isValid & kiemTraPassword(nv.matKhau);
-    isValid = isValid & kiemTraDay(nv.ngay);
-    isValid = isValid & kiemTraDoDaiLuong(nv.luong, "tbLuongCB", 10e6, 20e6);
-    isValid = isValid & kiemTraChucVu(nv.chucVu);
-    isValid = isValid & kiemTraDoDaiH(nv.gioLam, "tbGiolam", 80, 200);
-    if(isValid){
+    nv.taiKhoan_taiKhoan;    
     renderDsnv(dsnv);
     }
 }
