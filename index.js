@@ -1,143 +1,280 @@
 var dsnv = [];
-function themNv() {
-    var _taiKhoan = document.getElementById("tknv").value;
-    var _name = document.getElementById("name").value;
-    var _email = document.getElementById("email").value;
-    var _matKhau = document.getElementById("password").value;
-    var _ngay = document.getElementById("datepicker").value;
-    var _luong = document.getElementById("luongCB").value * 1;
-    var _chucVu = document.getElementById("chucvu").value;
-    var _gioLam = document.getElementById("gioLam").value * 1;
+// function themNv() {
+//     var _taiKhoan = document.getElementById("tknv").value;
+//     var _name = document.getElementById("name").value;
+//     var _email = document.getElementById("email").value;
+//     var _matKhau = document.getElementById("password").value;
+//     var _ngay = document.getElementById("datepicker").value;
+//     var _luong = document.getElementById("luongCB").value * 1;
+//     var _chucVu = document.getElementById("chucvu").value;
+//     var _gioLam = document.getElementById("gioLam").value * 1;
     
-    var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
-    var isValid =kiemTrung(dsnv,nv.taiKhoan) && kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
-    isValid = isValid & kiemTraName(nv.name, "tbTen");
-    isValid = isValid & kiemEmail(nv.email);
-    isValid = isValid & kiemTraPassword(nv.matKhau);
-    isValid = isValid & kiemTraDay(nv.ngay);
-    isValid = isValid & kiemTraDoDaiLuong(nv.luong, "tbLuongCB", 10e6, 20e6);
-    isValid = isValid & kiemTraChucVu(nv.chucVu);
-    isValid = isValid & kiemTraDoDaiH(nv.gioLam, "tbGiolam", 80, 200);
+//     var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
+//     var isValid =kiemTrung(dsnv,nv.taiKhoan) && kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
+//     isValid = isValid & kiemTraName(nv.name, "tbTen");
+//     isValid = isValid & kiemEmail(nv.email);
+//     isValid = isValid & kiemTraPassword(nv.matKhau);
+//     isValid = isValid & kiemTraDay(nv.ngay);
+//     isValid = isValid & kiemTraDoDaiLuong(nv.luong, "tbLuongCB", 10e6, 20e6);
+//     isValid = isValid & kiemTraChucVu(nv.chucVu);
+//     isValid = isValid & kiemTraDoDaiH(nv.gioLam, "tbGiolam", 80, 200);
 
-    if (isValid) {
-        dsnv.push(nv);
-        renderDsnv(dsnv);
-    }
-}
+//     if (isValid) {
+//         dsnv.push(nv);
+//         renderDsnv(dsnv);
+//     }
+// }
 function xoaNv(id) {
     var viTri = dsnv.findIndex(function (item) {
-        return item.taiKhoan == id;
+        return item.ma == id;
     })
     console.log('viTri: ', viTri);
     dsnv.splice(viTri, 1);
     renderDsnv(dsnv);
+    console.log("hello")
 }
 function suaNv(id) {
     var viTri = dsnv.findIndex(function (item) {
-        return item.taiKhoan == id;
+        return item.ma == id;
     })
     var nv = dsnv[viTri];
-    document.getElementById("tknv").value = nv.taiKhoan;
-    document.getElementById("name").value = nv.name;
-    document.getElementById("email").value = nv.email;
-    document.getElementById("password").value = nv.matKhau;
-    document.getElementById("datepicker").value = nv.ngay;
-    document.getElementById("luongCB").value = nv.luong;
-    document.getElementById("chucvu").value = nv.chucVu;
-    document.getElementById("gioLam").value = nv.gioLam;
+
+   
+     document.getElementById("idStudent").value = nv.ma ;
+    document.getElementById("nameStudent").value = nv.hoTen;
+   document.getElementById("emailStudent").value = nv.email;
+     document.getElementById("adressStudent").value = nv.diaChi;
+   document.getElementById("toanStudent").value = nv.toan;
+  document.getElementById("liStudent").value = nv.li;
+   document.getElementById("hoaStudent").value = nv.hoa;
+   
+
+   
+   
+   
+   
+   
+   
     renderDsnv(dsnv);
 }
+function suaNv1(id) {
+    var viTri = dsnv.findIndex(function (item) {
+        return item.ma == id;
+    })
+    var nv = dsnv[viTri];
+
+   
+     document.getElementById("idStudent").value = nv.ma ;
+    document.getElementById("nameStudent").value = nv.hoTen;
+   document.getElementById("emailStudent").value = nv.email;
+     document.getElementById("adressStudent").value = nv.diaChi;
+  
+   
+  document.getElementById("soNgayEmployee").value = nv.soNgay;
+   document.getElementById("luongEmployee").value = nv.luong;
+   
+   
+   
+   
+   
+   
+    renderDsnv(dsnv);
+}
+function suaNv2(id) {
+    var viTri = dsnv.findIndex(function (item) {
+        return item.ma == id;
+    })
+    var nv = dsnv[viTri];
+
+   
+     document.getElementById("idStudent").value = nv.ma ;
+    document.getElementById("nameStudent").value = nv.hoTen;
+   document.getElementById("emailStudent").value = nv.email;
+     document.getElementById("adressStudent").value = nv.diaChi;
+  
+document.getElementById("congTyCustomer").value = nv.congTy;
+     document.getElementById("triGiaCustomer").value = nv.triGia;
+    document.getElementById("danhGiaCustomer").value = nv.danhGia;
+   
+   
+   
+   
+   
+    renderDsnv(dsnv);
+}
+
+
+
+
+
+
+
+
 function capNhat() {
 
-    var _taiKhoan = document.getElementById("tknv").value;
-    var _name = document.getElementById("name").value;
-    var _email = document.getElementById("email").value;
-    var _matKhau = document.getElementById("password").value;
-    var _ngay = document.getElementById("datepicker").value;
-    var _luong = document.getElementById("luongCB").value * 1;
-    var _chucVu = document.getElementById("chucvu").value;
-    var _gioLam = document.getElementById("gioLam").value * 1;
-    var viTri = dsnv.findIndex(function (item) {
-        return item.taiKhoan == _taiKhoan;
-    })
-    var nv = new nhanVien(_taiKhoan, _name, _email, _matKhau, _ngay, _luong, _chucVu, _gioLam);
-    console.log('viTri: ', viTri);
-    var isValid =kiemTraDoDai(nv.taiKhoan, "tbTKNV", 4, 6)  ;
-    isValid = isValid & kiemTraName(nv.name, "tbTen");
-    isValid = isValid & kiemEmail(nv.email);
-    isValid = isValid & kiemTraPassword(nv.matKhau);
-    isValid = isValid & kiemTraDay(nv.ngay);
-    isValid = isValid & kiemTraDoDaiLuong(nv.luong, "tbLuongCB", 10e6, 20e6);
-    isValid = isValid & kiemTraChucVu(nv.chucVu);
-    isValid = isValid & kiemTraDoDaiH(nv.gioLam, "tbGiolam", 80, 200);
+    let id = document.getElementById("idStudent").value ;
+let name = document.getElementById("nameStudent").value;
+let email = document.getElementById("emailStudent").value;
+let adress = document.getElementById("adressStudent").value;
+let toan = document.getElementById("toanStudent").value
+let li = document.getElementById("liStudent").value
+let hoa = document.getElementById("hoaStudent").value
+var viTri = dsnv.findIndex(function (item) {
+    return item.ma == id;
+})
 
-    if(isValid){
-    var nv = dsnv[viTri];
-    nv.name = _name;
-    nv.email = _email;
-    nv.matKhau = _matKhau;
-    nv.ngay = _ngay;
-    nv.luong = _luong;
-    nv.ngay = _ngay;
-    nv.chucVu = _chucVu;
-    nv.gioLam = _gioLam;
-    nv.taiKhoan_taiKhoan; 
+var st = new student (name,adress,id,email,toan,li,hoa);
+    
+    
+
+ 
+    var st = dsnv[viTri];
+   st.name = name;
+  
+   st.email = email;
+  st.adress = adress;
+  st.toan = toan;
+  st.li = li;
+  st.hoa = hoa;
        
     renderDsnv(dsnv);
-    }
+    
 }
 
+function capNhat1() {
 
-
-
-function timNv() {
-    var _taiKhoan = document.getElementById("tknv").value;
-    var loaiNhanVien = document.getElementById("searchName").value;
-
-    // Tìm vị trí của nhân viên trong mảng dsnv
+  
+    let id = document.getElementById("idEmployee").value ;
+    let name = document.getElementById("nameEmployee").value;
+    let email = document.getElementById("emailEmployee").value;
+    let adress = document.getElementById("adressEmployee").value;
+    let soNgay = document.getElementById("soNgayEmployee").value;
+    let luong =document.getElementById("luongEmployee").value;
+    
+    
+    
     var viTri = dsnv.findIndex(function (item) {
-        return item.taiKhoan == _taiKhoan;
-    });
+        return item.ma == id;
+    })
+    var emp = new employee(name,adress,id,email,soNgay,luong)
 
-    // Kiểm tra nếu viTri hợp lệ
-    if (viTri !== -1) {
-        var nv = dsnv[viTri];
-        console.log('dsnv: ', dsnv);
-        var xepLoai = nv.xepLoai(); // Giả định xepLoai trả về chuỗi xếp loại
 
-        // Hiển thị xếp loại của nhân viên
-        console.log(xepLoai);
+    
+    
 
-        // Lọc danh sách nhân viên theo loại
-        var filterNv = dsnv.filter(function (item) {
-            return item.xepLoai() == loaiNhanVien;
-        });
-        var content="";
-        // Hiển thị danh sách nhân viên theo loại
-        filterNv.forEach(function (data) {
-            content+=`<tr>
-            <td>${data.taiKhoan}</td>
-            <td>${data.name}</td>
-            <td>${data.email}</td>
-            <td>${data.ngay}</td>
-            <td>${data.chucVu}</td>
-            <td>${data.tienLuong().toLocaleString()} VNĐ</td>
-            <td>${data.xepLoai()}</td>
-            <td>
-            <button onclick="xoaNv('${data.taiKhoan}')" class="btn btn-danger">Xoá</button> 
-            <button data-toggle="modal" data-target="#myModal" onclick="suaNv('${data.taiKhoan}')" class="btn btn-warning">Sửa</button>                      
-            </td>
-            
+ 
+    var emp = dsnv[viTri];
+   emp.name = name;
+  
+   emp.email = email;
+  emp.adress = adress;
+  emp.soNgay = soNgay;
+  emp.luong = luong;
+       
+    renderDsnv(dsnv);
+    
+}
 
-</tr>`
-        });
-    } else {
-        console.log("Không tìm thấy nhân viên có tài khoản " + _taiKhoan);
-    }
-    document.getElementById("tableDanhSach").innerHTML=content;
+function capNhat2() {
+
+  
+    let id = document.getElementById("idCustomer").value ;
+    let name = document.getElementById("nameCustomer").value;
+    let email = document.getElementById("emailCustomer").value;
+    let adress = document.getElementById("adressCustomer").value;
+    let tenCongTy = document.getElementById("congTyCustomer").value
+    let triGia = document.getElementById("triGiaCustomer").value;
+    let danhGia = document.getElementById("danhGiaCustomer").value
+    
+    
+    
+    var viTri = dsnv.findIndex(function (item) {
+        return item.ma == id;
+    })
+   
+    var cus = new customer(name,adress,id,email,tenCongTy,triGia,danhGia)
+
+
+    
+    
+
+ 
+    var cus = dsnv[viTri];
+  
+    cus.name = name;
+  
+   cus.email = email;
+  cus.adress = adress;
+cus.congTy = tenCongTy;
+cus.triGia = triGia;
+cus.danhGia = danhGia;
+       
+    renderDsnv(dsnv);
+    
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const themNv = () => { 
+let id = document.getElementById("idStudent").value ;
+let name = document.getElementById("nameStudent").value;
+let email = document.getElementById("emailStudent").value;
+let adress = document.getElementById("adressStudent").value;
+let toan = document.getElementById("toanStudent").value * 1;
+let li = document.getElementById("liStudent").value * 1 ;
+let hoa = document.getElementById("hoaStudent").value * 1 ;
+var st = new student (name,adress,id,email,toan,li,hoa);
+
+dsnv.push(st);
+console.log('dsnv: ', dsnv);
+renderDsnv(dsnv);
+ }
+ const themNv1 = () => { 
+    let id = document.getElementById("idEmployee").value ;
+    let name = document.getElementById("nameEmployee").value;
+    let email = document.getElementById("emailEmployee").value;
+    let adress = document.getElementById("adressEmployee").value;
+    let soNgay = document.getElementById("soNgayEmployee").value;
+    let luong =document.getElementById("luongEmployee").value;
+    var emp = new employee(name,adress,id,email,soNgay,luong)
+    
+    dsnv.push(emp);
+    console.log('dsnv: ', dsnv);
+    renderDsnv(dsnv);
+     }
+
+     const themNv2 = () => { 
+        let id = document.getElementById("idCustomer").value ;
+        let name = document.getElementById("nameCustomer").value;
+        let email = document.getElementById("emailCustomer").value;
+        let adress = document.getElementById("adressCustomer").value;
+        let tenCongTy = document.getElementById("congTyCustomer").value
+        let triGia = document.getElementById("triGiaCustomer").value;
+        let danhGia = document.getElementById("danhGiaCustomer").value
+        var cus = new customer(name,adress,id,email,tenCongTy,triGia,danhGia)
+        
+        dsnv.push(cus);
+        console.log('dsnv: ', dsnv);
+        renderDsnv(dsnv);
+         }
 
 
 
